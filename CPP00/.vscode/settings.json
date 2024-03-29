@@ -48,6 +48,8 @@
         "utility": "cpp",
         "ranges": "cpp",
         "span": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "iomanip": "cpp",
+        "sstream": "cpp"
     }
 }

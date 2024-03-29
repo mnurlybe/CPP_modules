@@ -11,11 +11,11 @@ int main()
     std::cin >> heap_name;
 
     //alocate on the stack - no need to delete - RANDOMCHUMP
-    std::cout << "Zombie on a stack." << std::endl;
+    // std::cout << "Zombie on a stack." << std::endl;
     randomChump(stack_name);
 
     // allocate on the heap - need to delete - NEWZOMBIE
-    std::cout << "Zombie on a heap." << std::endl;
+    // std::cout << "Zombie on a heap." << std::endl;
     Zombie* z1 = newZombie(heap_name);
     z1->announce();
     delete z1;

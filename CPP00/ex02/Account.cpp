@@ -12,7 +12,12 @@ int Account::_totalNbWithdrawals = 0;
 void Account::_displayTimestamp( void ) {
     std::time_t now = std::time(0);
     std::tm *ltm = std::localtime(&now);
-    std::cout << "[" << 1900 + ltm->tm_year << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+
+    if (ltm->tm_min <= 9)
+        std::cout << "[" << 1900 + ltm->tm_year << "0" << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+    else
+        std::cout << "[" << 1900 + ltm->tm_year << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+
 }
 
 Account::Account( int initial_deposit ) : _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
