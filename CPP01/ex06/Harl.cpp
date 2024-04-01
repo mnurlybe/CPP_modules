@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 18:55:37 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/01 14:55:01 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:21:08 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Harl::Harl(){
 }
 
 Harl::~Harl(){
-    std::cout << "destructor.. exiting the program." << std::endl;
+    ;
 }
 
 void Harl::debug(void){
@@ -39,13 +39,20 @@ void Harl::error(void){
 void Harl::complain(std::string level)
 {
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    fptr action[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     int i = 0;
-    while(i < 4 && level.compare(levels[i])){
-            i++;
+    while(i < 4 && level.compare(levels[i]))
+        i++;
+    switch(i){
+        case 0:
+            this->debug();
+        case 1:
+            this->info();
+        case 2: 
+            this->warning();
+        case 3:
+            this->error();
+            break;
+        default:
+            std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
     }
-    if (i == 4)
-        std::cout << "[SMTH ELSE] Probably complaining about insignificant problems" << i << std::endl;
-    else
-        (this->*(action[i]))();
 }

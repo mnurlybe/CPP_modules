@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/29 18:53:37 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/01 14:55:06 by mnurlybe         ###   ########.fr       */
+/*   Created: 2024/03/29 18:53:21 by mnurlybe          #+#    #+#             */
+/*   Updated: 2024/04/01 15:16:04 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-#include <iostream>
-#include <string>
-
-class Harl
+int main(int argc, char *argv[])
 {
-    private:
-        void debug( void );
-        void info( void );
-        void warning( void );
-        void error( void );
+    if (argc != 2)
+    {
+        std::cerr << "Wrong amount of arguments." << std::endl;
+        std::cout << "Input: [DEBUG], [INFO], [WARNING], [INFO]" << std::endl;
+        return 1;
+    }
+
+    Harl harl; 
+    harl.complain(argv[1]);
     
-    public:
-        Harl();
-        ~Harl();
-        void complain( std::string level );
-};
-
-typedef void (Harl::*fptr)(void);
-
-#endif
+    return 0;
+}
