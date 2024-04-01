@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:01:29 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/03/29 16:21:43 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:31:37 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,12 @@ void    PhoneBook::search()
     else
         user_to_display_max = index;
     std::cout << "Enter a user index to display, available indexex from 1 to " << user_to_display_max << " : ";
-    std::cin >> user_to_display;
         
-    while (user_to_display < 1 || user_to_display > user_to_display_max)
+    while (!(std::cin >> user_to_display) || (user_to_display < 1 || user_to_display > user_to_display_max))
     {
+        std::cin.clear();
+        std::cin.ignore();
         std::cout << "The user with this index does not exist, try again.\nAvailable indexex from 1 to " << user_to_display_max << " : ";
-        std::cin >> user_to_display;
         if (std::cin.eof())
             return ;
     }

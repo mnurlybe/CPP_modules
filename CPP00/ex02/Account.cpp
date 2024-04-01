@@ -13,10 +13,14 @@ void Account::_displayTimestamp( void ) {
     std::time_t now = std::time(0);
     std::tm *ltm = std::localtime(&now);
 
-    if (ltm->tm_min <= 9)
-        std::cout << "[" << 1900 + ltm->tm_year << "0" << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
-    else
+    if (ltm->tm_mon <= 9 && ltm->tm_mday <= 9)
+        std::cout << "[" << 1900 + ltm->tm_year << "0" << 1 + ltm->tm_mon << "0" << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+    else if (ltm->tm_mon > 9 && ltm->tm_mday > 9)
         std::cout << "[" << 1900 + ltm->tm_year << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+    else if (ltm->tm_mon > 9 && ltm->tm_mday <= 9)
+        std::cout << "[" << 1900 + ltm->tm_year << 1 + ltm->tm_mon << "0" << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
+    else if (ltm->tm_mon <= 9 && ltm->tm_mday > 9)
+        std::cout << "[" << 1900 + ltm->tm_year << "0" << 1 + ltm->tm_mon << ltm->tm_mday << "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "] ";
 
 }
 
