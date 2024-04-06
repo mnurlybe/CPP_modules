@@ -69,34 +69,47 @@ std::ostream &operator<<(std::ostream &out, Fixed const &value)
 
 //================= Overload operators =================//
 
-Fixed Fixed::operator+(const Fixed &fixed) const
+Fixed Fixed::operator+(const Fixed &obj) const
 {
-    return Fixed(toFloat() + fixed.toFloat());
+    return Fixed(toFloat() + obj.toFloat());
 }
 
-Fixed Fixed::operator-(const Fixed &fixed) const
+Fixed Fixed::operator-(const Fixed &obj) const
 {
-    return Fixed(toFloat() - fixed.toFloat());
+    return Fixed(toFloat() - obj.toFloat());
 }
 
-Fixed Fixed::operator*(const Fixed &fixed) const
+Fixed Fixed::operator*(const Fixed &obj) const
 {
-    return Fixed(toFloat() * fixed.toFloat());
+    return Fixed(toFloat() * obj.toFloat());
 }
 
-Fixed Fixed::operator/(const Fixed &fixed) const
+Fixed Fixed::operator/(const Fixed &obj) const
 {
-    return Fixed(toFloat() / fixed.toFloat());
+    return Fixed(toFloat() / obj.toFloat());
 }
 
 //================= Increment operators =================//
 
+
+/**
+ * The pre-increment operator 
+ * modifies the current object 
+ * and returns a reference 
+ * to the modified object.
+*/
 Fixed &Fixed::operator++()
 {
     _value++;
     return *this;
 }
 
+/**
+ * The post-increment operator 
+ * returns a copy of the original 
+ * object before modification and 
+ * then increments the current object's value.
+*/
 Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
@@ -119,34 +132,34 @@ Fixed Fixed::operator--(int)
 
 //================= Comparison operators =================//
 
-bool Fixed::operator>(const Fixed &fixed) const
+bool Fixed::operator>(const Fixed &obj) const
 {
-    return _value > fixed.getRawBits();
+    return _value > obj.getRawBits();
 }
 
-bool Fixed::operator<(const Fixed &fixed) const
+bool Fixed::operator<(const Fixed &obj) const
 {
-    return _value < fixed.getRawBits();
+    return _value < obj.getRawBits();
 }
 
-bool Fixed::operator>=(const Fixed &fixed) const
+bool Fixed::operator>=(const Fixed &obj) const
 {
-    return _value >= fixed.getRawBits();
+    return _value >= obj.getRawBits();
 }
 
-bool Fixed::operator<=(const Fixed &fixed) const
+bool Fixed::operator<=(const Fixed &obj) const
 {
-    return _value <= fixed.getRawBits();
+    return _value <= obj.getRawBits();
 }
 
-bool Fixed::operator==(const Fixed &fixed) const
+bool Fixed::operator==(const Fixed &obj) const
 {
-    return _value == fixed.getRawBits();
+    return _value == obj.getRawBits();
 }
 
-bool Fixed::operator!=(const Fixed &fixed) const
+bool Fixed::operator!=(const Fixed &obj) const
 {
-    return _value != fixed.getRawBits();
+    return _value != obj.getRawBits();
 }
 
 //================= Min and Max =================//

@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/06 19:42:40 by mnurlybe          #+#    #+#             */
+/*   Updated: 2024/04/06 19:46:36 by mnurlybe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "FragTrap.hpp"
+
+//constructor
+FragTrap::FragTrap() : ClapTrap()
+{
+    hit = 100;
+    energy = 100;
+    damage = 30;
+    std::cout << "Constructor: FragTrap is initialized as " << name << std::endl;
+}
+
+//constructor with input
+FragTrap::FragTrap(std::string name_input) : ClapTrap(name_input)
+{
+    hit = 100;
+    energy = 100;
+    damage = 100;
+    std::cout << "Subclass Constructor: FragTrap is initialized as " << name << std::endl;
+}
+
+FragTrap::~FragTrap(){
+    std::cout << "Subclass FragTrap Desctructor: " << name << " is terminated!" << std::endl;
+}
+
+//copy constructor
+FragTrap::FragTrap(const FragTrap &obj)
+{
+    name = obj.name + "_copy";
+    hit = obj.hit;
+    energy = obj.energy;
+    damage = obj.damage;
+    std::cout << "Sub: FragTrap Copy " << name << " is created." << std::endl;
+}
+
+//assignment operator
+FragTrap& FragTrap::operator=(const FragTrap& obj){
+    name = obj.name + "_assigned";
+    hit = obj.hit;
+    energy = obj.energy;
+    damage = obj.damage;
+    std::cout << "Sub: New FragTrap" << name << " is assigned." << std::endl;
+    return *this;
+}
+
+void FragTrap::highFivesGuys(void){
+    std::cout << "FragTrap " << name << " High Fives Guys!" << std::endl;
+}
