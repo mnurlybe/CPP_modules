@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 18:21:08 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 19:38:24 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:29:18 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ScavTrap::~ScavTrap(){
 }
 
 //copy constructor
-ScavTrap::ScavTrap(const ScavTrap &obj)
+ScavTrap::ScavTrap(const ScavTrap &obj): ClapTrap(obj)
 {
     name = obj.name + "_copy";
     hit = obj.hit;
@@ -46,6 +46,9 @@ ScavTrap::ScavTrap(const ScavTrap &obj)
 
 //assignment operator
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj){
+    
+    if (this == &obj)
+        return *this;
     name = obj.name + "_assigned";
     hit = obj.hit;
     energy = obj.energy;

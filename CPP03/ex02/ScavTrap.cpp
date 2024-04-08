@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 18:21:08 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 19:43:47 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:12:38 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap() : ClapTrap()
     hit = 100;
     energy = 50;
     damage = 20;
-    std::cout << "Constructor: ClapTrap is initialized as " << name << std::endl;
+    std::cout << "Subclass Constructor: ClapTrap is initialized as " << name << std::endl;
 }
 
 //constructor with input
@@ -31,11 +31,11 @@ ScavTrap::ScavTrap(std::string name_input) : ClapTrap(name_input)
 }
 
 ScavTrap::~ScavTrap(){
-    std::cout << "Subclass ScavTrap Desctructor: " << name << " is terminated!" << std::endl;
+    std::cout << "Subclass Desctructor: " << name << " is terminated!" << std::endl;
 }
 
 //copy constructor
-ScavTrap::ScavTrap(const ScavTrap &obj)
+ScavTrap::ScavTrap(const ScavTrap &obj): ClapTrap(obj)
 {
     name = obj.name + "_copy";
     hit = obj.hit;
@@ -46,6 +46,9 @@ ScavTrap::ScavTrap(const ScavTrap &obj)
 
 //assignment operator
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj){
+    
+    if (this == &obj)
+        return *this;
     name = obj.name + "_assigned";
     hit = obj.hit;
     energy = obj.energy;

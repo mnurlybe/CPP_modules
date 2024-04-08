@@ -3,53 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 19:57:04 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 20:15:45 by mnurlybe         ###   ########.fr       */
+/*   Created: 2024/04/08 15:05:42 by julienmoign       #+#    #+#             */
+/*   Updated: 2024/04/08 15:33:34 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-//constructor
-DiamondTrap::DiamondTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap()
 {
-    hit = FragTrap::hit;
-    energy = ScavTrap::energy;
-    damage = FragTrap::damage;
-    std::cout << "Constructor: DiamondTrap is initialized as " << name << std::endl;
-}
-
-//constructor with input
-DiamondTrap::DiamondTrap(std::string name_input) : ClapTrap(name_input + "_clap_name")
-{
-    hit = ;
-    energy = 100;
-    damage = 100;
+    this->name = "Default";
+    this->hit = this->FragTrap::hit;
+    this->energy = this->ScavTrap::energy;
+    this->damage = this->FragTrap::damage;
     std::cout << "Subclass Constructor: DiamondTrap is initialized as " << name << std::endl;
 }
 
-DiamondTrap::~DiamondTrap(){
+DiamondTrap::DiamondTrap(std::string name_input) : ClapTrap(name_input + "_clap_name"), ScavTrap(name_input + "_scav"), FragTrap(name_input + "_frag")
+{
+    this->name = name_input;
+    this->hit = this->FragTrap::hit;
+    this->energy = this->ScavTrap::energy;
+    this->damage = this->FragTrap::damage;
+    std::cout << "Subclass Constructor: DiamondTrap is initialized as " << name << std::endl;
+}
+
+DiamondTrap::~DiamondTrap()
+{
     std::cout << "Subclass DiamondTrap Desctructor: " << name << " is terminated!" << std::endl;
 }
 
-//copy constructor
-DiamondTrap::DiamondTrap(const DiamondTrap &obj)
+DiamondTrap::DiamondTrap(const DiamondTrap &obj) : ClapTrap(obj.name + "_clap_name"), ScavTrap(obj.name + "_scav"), FragTrap(obj.name + "_frag")
 {
-    name = obj.name + "_copy";
-    hit = obj.hit;
-    energy = obj.energy;
-    damage = obj.damage;
+    this->name = obj.name + "_copy";
+    this->hit = obj.hit;
+    this->energy = obj.energy;
+    this->damage = obj.damage;
     std::cout << "Sub: DiamondTrap Copy " << name << " is created." << std::endl;
 }
 
-//assignment operator
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj){
-    name = obj.name + "_assigned";
-    hit = obj.hit;
-    energy = obj.energy;
-    damage = obj.damage;
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
+{
+    if (this == &obj)
+        return *this;
+    this->name = obj.name + "_assigned";
+    this->hit = obj.hit;
+    this->energy = obj.energy;
+    this->damage = obj.damage;
     std::cout << "Sub: New DiamondTrap" << name << " is assigned." << std::endl;
     return *this;
+}
+
+void DiamondTrap::whoAmI(void)
+{
+    std::cout << "DiamondTrap: My name is " << this->name << " is " << this->ClapTrap::name << std::endl;
 }

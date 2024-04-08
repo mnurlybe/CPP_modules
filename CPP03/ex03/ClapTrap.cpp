@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:38 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 19:50:32 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:39:54 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,20 @@ void ClapTrap::beRepaired(unsigned int amount){
 
 void ClapTrap::get_data(void){
     std::cout << name << "--> Hit points: " << hit << "; Energy points: " << energy << "; Damage: " << damage << std::endl;
+}
+
+std::string ClapTrap::getName(void) const{
+    return name;
+}
+
+unsigned int ClapTrap::getHit(void) const{
+    return hit;
+}
+
+unsigned int ClapTrap::getEnergy(void) const{
+    return energy;
+}
+
+unsigned int ClapTrap::getDamage(void) const{
+    return damage;
 }

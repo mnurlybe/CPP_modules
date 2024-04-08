@@ -3,34 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:24 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 19:52:41 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:38:07 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-    // ClapTrap super("SUPER");
-    // ScavTrap sub2("COPPIE");
+    // Test 1: create a simple object
+    // DiamondTrap diam;
+    DiamondTrap diam1("DIAM1");
+    // DiamondTrap diam2(diam1);
+    // DiamondTrap diam3("DIAM3");
+    // diam3 = diam;
+
+    diam1.whoAmI();
     
-    // sub2.get_data();
-    // sub2.attack("Enemy");
-    // sub2.beRepaired(0);
-    // sub2.takeDamage(99);
-    // sub2.get_data();
-
-    // FragTrap frag0;
-    FragTrap frag1("FRAG1");
-
-    frag1.highFivesGuys();
-    frag1.get_data();
-    frag1.beRepaired(10);
-    frag1.get_data();
+    // Display initial data
+    // diam.get_data();
+    diam1.get_data();
+    diam1.takeDamage(50);
+    diam1.get_data();
     
     return 0;
 }

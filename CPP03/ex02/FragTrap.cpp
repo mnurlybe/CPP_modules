@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:42:40 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 19:46:36 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:12:43 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ FragTrap::FragTrap() : ClapTrap()
     hit = 100;
     energy = 100;
     damage = 30;
-    std::cout << "Constructor: FragTrap is initialized as " << name << std::endl;
+    std::cout << "Subclass Constructor: FragTrap is initialized as " << name << std::endl;
 }
 
 //constructor with input
@@ -35,7 +35,7 @@ FragTrap::~FragTrap(){
 }
 
 //copy constructor
-FragTrap::FragTrap(const FragTrap &obj)
+FragTrap::FragTrap(const FragTrap &obj) : ClapTrap(obj)
 {
     name = obj.name + "_copy";
     hit = obj.hit;
@@ -46,6 +46,8 @@ FragTrap::FragTrap(const FragTrap &obj)
 
 //assignment operator
 FragTrap& FragTrap::operator=(const FragTrap& obj){
+    if (this == &obj)
+        return *this;
     name = obj.name + "_assigned";
     hit = obj.hit;
     energy = obj.energy;

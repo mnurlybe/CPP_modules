@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 19:57:17 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 20:14:04 by mnurlybe         ###   ########.fr       */
+/*   Created: 2024/04/08 15:01:20 by julienmoign       #+#    #+#             */
+/*   Updated: 2024/04/08 15:32:31 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "ClapTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+# include <iostream>
+# include <string>
+
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
+
+class DiamondTrap : public ScavTrap, public FragTrap
+{
     private:
         std::string name;
+
     public:
         DiamondTrap();
-        DiamondTrap(std::string name);
+        DiamondTrap(std::string name_input);
         DiamondTrap(const DiamondTrap &obj);
         ~DiamondTrap();
 
         DiamondTrap &operator=(const DiamondTrap &obj);
-
-        // Using declaration to bring the attack function from ScavTrap into DiamondTrap's scope
-        using ScavTrap::attack;
-        void WhoAmI();
+        
+        void whoAmI();
 };
-
 #endif
