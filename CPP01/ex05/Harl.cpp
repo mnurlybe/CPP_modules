@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 18:55:37 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/01 14:55:01 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:35:33 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ void Harl::error(void){
     std::cout << "[ERROR] This is unacceptable! I want to speak to the manager now." << std::endl;    
 }
 
+void Harl::invalid(void){
+    std::cout << "[SMTH ELSE] Probably complaining about insignificant problems" << std::endl;
+}
+
 void Harl::complain(std::string level)
 {
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    fptr action[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    fptr action[5] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::invalid};
     int i = 0;
     while(i < 4 && level.compare(levels[i])){
             i++;
     }
-    if (i == 4)
-        std::cout << "[SMTH ELSE] Probably complaining about insignificant problems" << i << std::endl;
-    else
-        (this->*(action[i]))();
+    (this->*(action[i]))();
 }

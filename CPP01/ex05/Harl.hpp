@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 18:53:37 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/01 14:55:06 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:36:49 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Harl
         void info( void );
         void warning( void );
         void error( void );
+        void invalid(void);
     
     public:
         Harl();
