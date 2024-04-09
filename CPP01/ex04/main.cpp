@@ -6,13 +6,14 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:37:27 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/09 17:21:53 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:15:19 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
 int main(int argc, char **argv)
 {
@@ -26,9 +27,9 @@ int main(int argc, char **argv)
     std::string substr_old = argv[2];
     std::string substr_new = argv[3];
 
-    if (substr_old.empty() && !substr_new.empty())
+    if (substr_old.empty())
     {
-        std::cerr << "wrong input" << std::endl;
+        std::cerr << "wrong input: First string is empty" << std::endl;
         return 1;
     }
     
@@ -47,25 +48,26 @@ int main(int argc, char **argv)
         return 1;
     }
     
-    std::string line;
-    std::string newline;
-    
-    std::cerr << "HERE" << std::endl;
-    if (!std::getline(srcfile, line, '\0'))
+    std::stringstream WholeFile;
+    WholeFile << srcfile.rdbuf();
+    std::string whole_text = WholeFile.str();
+
+    if (!whole_text.length())
     {
         std::cerr << "File is empty" << std::endl;
         return 1;
     }
 
-    newline += line;
-    size_t pos = newline.find(substr_old);
-    while (pos != std::string::npos){
-        newline.erase(pos, substr_old.length());
-        newline.insert(pos, substr_new);
-        pos = newline.find(substr_old, pos + 1);
+    for (size_t i = 0; i < whole_text.length(); i++)
+    {
+        if (whole_text.substr(i).find(substr_old) == 0)
+        {
+            i += substr_old.length() - 1;
+            dstfile << substr_new;
+        }
+        else
+            dstfile << whole_text[i];
     }
-    dstfile << newline;
-    newline.clear();
     
     srcfile.close();
     dstfile.close();
