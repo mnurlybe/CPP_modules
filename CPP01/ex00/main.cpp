@@ -20,5 +20,8 @@ int main()
     z1->announce();
     delete z1;
 
+    // Zombie New;
+    // New.announce();
+
     return 0;
 }

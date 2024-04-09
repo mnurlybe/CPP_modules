@@ -6,7 +6,7 @@
 /*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:37:27 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/01 18:42:43 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:21:53 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int main(int argc, char **argv)
     std::string line;
     std::string newline;
     
+    std::cerr << "HERE" << std::endl;
     if (!std::getline(srcfile, line, '\0'))
     {
         std::cerr << "File is empty" << std::endl;

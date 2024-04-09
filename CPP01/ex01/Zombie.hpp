@@ -12,14 +12,8 @@ class Zombie
     public:
         Zombie();
         ~Zombie();
-        void setName(std::string name, int i){
-            this->name = name;
-            this->id = i;
-        }
-        void announce(void)
-        {
-            std::cout << this->name << this->id << ": BraiiiiiiinnnzzzZ..." << std::endl;
-        }
+        void setName(std::string name, int i);
+        void announce(void);
 };
 
 Zombie* zombieHorde( int N, std::string name );
