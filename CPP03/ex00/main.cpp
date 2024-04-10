@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:24 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/10 15:08:06 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 18:20:38 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-    ClapTrap a("Uno");
+    ClapTrap a("ONE");
     ClapTrap b(a);
     ClapTrap c;
     c = a;

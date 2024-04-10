@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:05:42 by julienmoign       #+#    #+#             */
-/*   Updated: 2024/04/10 16:20:50 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 18:19:38 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap()
 {
-    this->name = "Default";
+    this->name = "name";
+    this->ClapTrap::name = this->name + "_clap_name";
     this->hit = FragTrap::hit;
-    // std::cout << "ENERGY SHOULD BE 30, BUT IT IS " << ScavTrap::energy << std::endl;
     this->damage = FragTrap::damage;
+    ScavTrap::energy = 50;
     this->energy = ScavTrap::energy;
     std::cout << "[DIAMONDTRAP] Sub Constructor: DiamondTrap is initialized as " << name << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name_input) : FragTrap(name_input + "_frag"), ScavTrap(name_input + "_scav")
+DiamondTrap::DiamondTrap(std::string name_input) : ScavTrap(name_input + "_scav"), FragTrap(name_input + "_frag")
 {
     this->name = name_input;
+    this->ClapTrap::name = this->name + "_clap_name";
     this->hit = FragTrap::hit;
     this->damage = FragTrap::damage;
+    ScavTrap::energy = 50;
     this->energy = ScavTrap::energy;
     std::cout << "[DIAMONDTRAP] Sub Constructor: DiamondTrap is initialized as " << name << std::endl;
 }
@@ -36,9 +39,10 @@ DiamondTrap::~DiamondTrap()
     std::cout << "[DIAMONDTRAP] Sub DiamondTrap Desctructor: " << name << " is terminated!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &obj) : ClapTrap(obj.name + "_copy"), FragTrap(obj.name + "_copy"), ScavTrap(obj.name + "_copy")
+DiamondTrap::DiamondTrap(const DiamondTrap &obj) : ClapTrap(obj.name + "_copy"), ScavTrap(obj.name + "_copy"), FragTrap(obj.name + "_copy")
 {
     this->name = obj.name + "_copy";
+    this->ClapTrap::name = this->name + "_clap_name";
     this->hit = obj.hit;
     this->energy = obj.energy;
     this->damage = obj.damage;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
+/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:24 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/10 15:36:39 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 18:20:28 by mnurlybe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
 
     // write a message that says the initialization of the objects on std::cout
     std::cout << "=====================================================" << std::endl;
-    std::cout << "Initialization, copy consturctor, assignment operator" << std::endl;
+    std::cout << "Initialization, copy constructor, assignment operator" << std::endl;
     std::cout << "=====================================================" << std::endl;
     ScavTrap def;
     std::cout << std::endl;
