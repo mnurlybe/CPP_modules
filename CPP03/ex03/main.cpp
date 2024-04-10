@@ -6,7 +6,7 @@
 /*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:24 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/08 15:38:07 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 16:03:12 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,69 @@
 
 int main(void)
 {
-    // Test 1: create a simple object
-    // DiamondTrap diam;
-    DiamondTrap diam1("DIAM1");
-    // DiamondTrap diam2(diam1);
-    // DiamondTrap diam3("DIAM3");
-    // diam3 = diam;
-
-    diam1.whoAmI();
-    
-    // Display initial data
-    // diam.get_data();
-    diam1.get_data();
-    diam1.takeDamage(50);
-    diam1.get_data();
+    std::cout << "=====================================================" << std::endl;
+    std::cout << "Initialization, copy consturctor, assignment operator" << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    DiamondTrap Diamond0;
+    DiamondTrap Diamond1("Diamond1");
+    DiamondTrap Diamond2(Diamond1);
+    DiamondTrap Diamond3("Diamond3");
+    DiamondTrap Diamond4("Diamond4");
+    Diamond4 = Diamond3;
+    std::cout << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << "                 Display initial data                " << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << std::endl;
+    Diamond0.get_data();
+    Diamond1.get_data();
+    Diamond2.get_data();
+    Diamond3.get_data();
+    std::cout << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << "                 Perform some actions                " << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << std::endl;
+    //Diamond0
+    Diamond0.attack("Enemy");
+    Diamond0.whoAmI();
+    Diamond0.takeDamage(5);
+    Diamond0.beRepaired(0);
+    Diamond0.attack("Enemy");
+    Diamond0.beRepaired(42);
+    std::cout << std::endl;
+    //Diamond1
+    Diamond1.attack("Enemy1");
+    Diamond1.whoAmI();
+    Diamond1.takeDamage(0);
+    Diamond1.beRepaired(0);
+    Diamond1.takeDamage(50);
+    Diamond1.beRepaired(50);
+    std::cout << std::endl;
+    //Diamond2
+    Diamond2.whoAmI();
+    Diamond2.takeDamage(5);
+    Diamond2.beRepaired(10);
+    Diamond2.takeDamage(99);
+    Diamond2.attack("Enemy2");
+    std::cout << std::endl;
+    std::cout << std::endl;
+    //Diamond3
+    Diamond3.takeDamage(46);
+    Diamond3.beRepaired(0);
+    Diamond3.takeDamage(99);
+    Diamond3.attack("Enemy");
+    Diamond3.beRepaired(10);
+    std::cout << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << "                     Display data                    " << std::endl;
+    std::cout << "=====================================================" << std::endl;
+    std::cout << std::endl;
+    Diamond0.get_data();
+    Diamond1.get_data();
+    Diamond2.get_data();
+    Diamond3.get_data();
+    std::cout << std::endl;
     
     return 0;
 }

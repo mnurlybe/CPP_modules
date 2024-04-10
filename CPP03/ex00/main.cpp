@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:24 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 18:05:32 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:08:06 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,31 @@ int main(void)
     ClapTrap b(a);
     ClapTrap c;
     c = a;
-    
+    std::cout << std::endl;
     a.attack("Enemy1");
+    std::cout << std::endl;
     a.takeDamage(10);
+    std::cout << std::endl;
     a.beRepaired(3);
+    std::cout << std::endl;
     a.attack("Enemy2");
+    std::cout << std::endl;
     a.attack("Enemy3");
+    std::cout << std::endl;
     a.attack("Enemy4");
+    std::cout << std::endl;
     a.get_data();
+    std::cout << std::endl;
     b.get_data();
+    std::cout << std::endl;
+    b.takeDamage(7);
+    std::cout << std::endl;
+    b.attack("Enemy5");
+    std::cout << std::endl;
+    b.beRepaired(5);
+    std::cout << std::endl;
+    b.get_data();
+    std::cout << std::endl;
     
     return 0;
 }
-
-// // Create ClapTrap objects
-// ClapTrap claptrap1("Clappy1");
-// ClapTrap claptrap2("Clappy2");
-
-// // Display initial data
-// claptrap1.get_data();
-// claptrap2.get_data();
-
-// // Perform some actions
-// claptrap1.attack("Enemy");
-// claptrap2.takeDamage(3);
-// claptrap1.beRepaired(2);
-// claptrap2.attack("Enemy");
-
-// // Display updated data
-// claptrap1.get_data();
-// claptrap2.get_data();
-
-// // Test copy constructor
-// ClapTrap claptrap3(claptrap1);
-// claptrap3.get_data();
-
-// // Test assignment operator
-// claptrap2 = claptrap3;
-// claptrap2.get_data();

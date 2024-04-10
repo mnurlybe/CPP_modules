@@ -6,7 +6,7 @@
 /*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 18:21:08 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/08 15:12:38 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 15:58:48 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScavTrap::ScavTrap() : ClapTrap()
     hit = 100;
     energy = 50;
     damage = 20;
-    std::cout << "Subclass Constructor: ClapTrap is initialized as " << name << std::endl;
+    std::cout << "[SCAVTRAP] Sub Constructor: ScavTrap is initialized as " << name << std::endl;
 }
 
 //constructor with input
@@ -27,11 +27,11 @@ ScavTrap::ScavTrap(std::string name_input) : ClapTrap(name_input)
     hit = 100;
     energy = 50;
     damage = 20;
-    std::cout << "Subclass Constructor: ScavTrap is initialized as " << name << std::endl;
+    std::cout << "[SCAVTRAP] Sub Constructor: ScavTrap is initialized as " << name << std::endl;
 }
 
 ScavTrap::~ScavTrap(){
-    std::cout << "Subclass Desctructor: " << name << " is terminated!" << std::endl;
+    std::cout << "[SCAVTRAP] Sub Desctructor: " << name << " is terminated!" << std::endl;
 }
 
 //copy constructor
@@ -41,7 +41,7 @@ ScavTrap::ScavTrap(const ScavTrap &obj): ClapTrap(obj)
     hit = obj.hit;
     energy = obj.energy;
     damage = obj.damage;
-    std::cout << "Sub: ScavTrap Copy " << name << " is created." << std::endl;
+    std::cout << "[SCAVTRAP] Copy " << name << " is created." << std::endl;
 }
 
 //assignment operator
@@ -53,27 +53,31 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& obj){
     hit = obj.hit;
     energy = obj.energy;
     damage = obj.damage;
-    std::cout << "Sub: New ScavTrap" << name << " is assigned." << std::endl;
+    std::cout << "[SCAVTRAP] New " << name << " is assigned." << std::endl;
     return *this;
 }
 
 void ScavTrap::attack(const std::string& target){
     if (hit < 1)
     {
-        std::cout << "Sub: " << name << " is already destroyed!" << std::endl;
+        std::cout << "[SCAVTRAP] " << name << " is already destroyed!" << std::endl;
         return ;
     }
     if (energy > 0) {
-        std::cout << "Sub: " << name << " attacks " << target << std::endl;
+        std::cout << "[SCAVTRAP] " << name << " attacks " << target << std::endl;
         energy -= 1;
     }
     else{
-        std::cout << "Sub: " << name << " doesn't have enough energy points to attack!" << std::endl;
+        std::cout << "[SCAVTRAP] " << name << " doesn't have enough energy points to attack!" << std::endl;
     }
 }
 
 void ScavTrap::guardGate()
 {
-    std::cout << " ScavTrap " << name << " entered Gate keeper mode! "<< std::endl;
+    std::cout << "[SCAVTRAP] " << name << " entered Gate keeper mode! "<< std::endl;
+}
+
+void ScavTrap::get_data(void){
+    std::cout << "[SCAVTRAP] " << name << "--> Hit points: " << hit << "; Energy points: " << energy << "; Damage: " << damage << std::endl;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnurlybe <mnurlybe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:38 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/06 18:29:38 by mnurlybe         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:54:06 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ClapTrap::attack(const std::string& target){
         return ;
     }
     if (energy > 0) {
-        std::cout << name << " attacks " << target << std::endl;
+        std::cout << name << " attacks " << target << " causing " << damage << " points of damage!" << std::endl;
         energy -= 1;
     }
     else{
@@ -90,7 +90,7 @@ void ClapTrap::beRepaired(unsigned int amount){
         energy -= 1;
     }
     else {
-        std::cout << "Not enough hit points to repair!" << std::endl;
+        std::cout << "Not " << name << " enough hit points to repair!" << std::endl;
     }
 }
 

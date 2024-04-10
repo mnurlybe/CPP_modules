@@ -6,7 +6,7 @@
 /*   By: julienmoigno <julienmoigno@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:28:44 by mnurlybe          #+#    #+#             */
-/*   Updated: 2024/04/08 15:31:20 by julienmoign      ###   ########.fr       */
+/*   Updated: 2024/04/10 15:59:14 by julienmoign      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class ClapTrap{
     protected:
         std::string name;
-        unsigned int hit;
-        unsigned int energy;
-        unsigned int damage;
+        int hit;
+        int energy;
+        int damage;
 
     public:
         ClapTrap();                                 //Default constructor
