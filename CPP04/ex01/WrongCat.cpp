@@ -22,7 +22,7 @@ WrongCat &WrongCat::operator=(const WrongCat &wrongCat)
     if (this == &wrongCat)
         return *this;
     this->_type = wrongCat._type;
-    std::cout << "WrongCat: copy assignement operator called" << std::endl;
+    std::cout << "WrongCat: copy assignment operator called" << std::endl;
     return *this;
 }
 
