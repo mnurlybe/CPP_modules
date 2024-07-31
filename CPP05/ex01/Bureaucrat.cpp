@@ -25,8 +25,5 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &source)
 }
 
 // Destructor
-Bureaucrat::~Bureaucrat()
-{
-    std::cout << this->getName() << " destroyed..." << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
