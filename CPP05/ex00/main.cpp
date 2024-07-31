@@ -2,17 +2,51 @@
 
 int main(void)
 {
-    Bureaucrat A("Anthony", 1);
-    Bureaucrat B("Bryan", 150);
+    // //test parametric constructor
+    // Bureaucrat A("Anthony", 1);
+    // std::cout << A << std::endl;
 
-    //test copy constructor
-    Bureaucrat C(A);
-    std::cout << "C:" << C.getName() << " " << C.getGrade() << std::endl;
+    // //test constructor
+    // Bureaucrat B;
+    // std::cout << B << std::endl;
 
-    //test assignation operator
-    B = A;
-    std::cout << "B:" << B.getName() << " " << B.getGrade() << std::endl;
+    // //test copy constructor
+    // Bureaucrat C(A);
+    // std::cout << C << std::endl;
+
+    // // test assignation operator
+    // B = A;
+    // std::cout << B << std::endl;
     
+    try {
+        Bureaucrat C("Calvin", 0);
+    } catch (Bureaucrat::GradeTooHighException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    } catch (Bureaucrat::GradeTooLowException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+
+    Bureaucrat D("David", 2);
+    std::cout << D << std::endl;
+    try {
+        D.GradeUp();
+        std::cout << D << std::endl;
+        D.GradeUp();
+        std::cout << D << std::endl;
+    } catch (Bureaucrat::GradeTooHighException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    } catch (Bureaucrat::GradeTooLowException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+
+    Bureaucrat E("Elvis", 75);
+    std::cout << E << std::endl;
+    try {
+        E.GradeDown();
+        std::cout << E << std::endl;
+    } catch (Bureaucrat::GradeTooLowException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
     return 0;
 }
