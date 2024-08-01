@@ -10,7 +10,7 @@ Form::Form(std::string const &name, int const &SignGrade, int const &ExecGrade) 
     if (this->SignGrade < 1 || this->ExecGrade < 1)
         throw Form::GradeTooHighException();
     else if (this->SignGrade > 150 || this->ExecGrade > 150)
-        throw Form::GradeTooHighException();
+        throw Form::GradeTooLowException();
 }
 // Copy constructor
 Form::Form(const Form &source) : name(source.name), is_signed(source.is_signed), SignGrade(source.SignGrade), ExecGrade(source.ExecGrade) {}

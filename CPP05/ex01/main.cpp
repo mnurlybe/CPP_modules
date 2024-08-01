@@ -1,52 +1,36 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
-    // //test parametric constructor
-    // Bureaucrat A("Anthony", 1);
-    // std::cout << A << std::endl;
+    /* Test 1 */
+    Bureaucrat Alan("Alan", 50);
+    std::cout << Alan << std::endl;
 
-    // //test constructor
-    // Bureaucrat B;
-    // std::cout << B << std::endl;
+    Form F1("Form1", 50, 70);
+    std::cout << F1 << std::endl;
 
-    // //test copy constructor
-    // Bureaucrat C(A);
-    // std::cout << C << std::endl;
+    Alan.signForm(F1);
+    std::cout << F1 << std::endl;
 
-    // // test assignation operator
-    // B = A;
-    // std::cout << B << std::endl;
-    
-    try {
-        Bureaucrat C("Calvin", 0);
-    } catch (Bureaucrat::GradeTooHighException &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    } catch (Bureaucrat::GradeTooLowException &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
+    /* Test 2 */
+    // try {
+    //     Form F2("Form2", 150, 5);
+    //     std::cout << F2 << std::endl;
+    // } catch (Form::GradeTooHighException &e) {
+    //     std::cout << "Exception: " << e.what() << std::endl;
+    // } catch (Form::GradeTooLowException &e) {
+    //     std::cout << "Exception: " << e.what() << std::endl;
+    // }
 
-    Bureaucrat D("David", 2);
-    std::cout << D << std::endl;
-    try {
-        D.GradeUp();
-        std::cout << D << std::endl;
-        D.GradeUp();
-        std::cout << D << std::endl;
-    } catch (Bureaucrat::GradeTooHighException &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    } catch (Bureaucrat::GradeTooLowException &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
+    /* Test 3 */
+    // Bureaucrat Bob("Bob", 51);
+    // std::cout << Bob << std::endl;
 
-    Bureaucrat E("Elvis", 75);
-    std::cout << E << std::endl;
-    try {
-        E.GradeDown();
-        std::cout << E << std::endl;
-    } catch (Bureaucrat::GradeTooLowException &e) {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
+    // Form F3("Form3", 50, 70);
+    // std::cout << F3 << std::endl;
+
+    // Bob.signForm(F3);
 
     return 0;
 }

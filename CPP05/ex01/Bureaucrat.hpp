@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+class Form;
 
 class Bureaucrat
 {
@@ -24,6 +25,7 @@ class Bureaucrat
         //Member Functions
         void GradeUp(void);
         void GradeDown(void);
+        void signForm(Form &form);
 
         // Nested Exception Classes
         class GradeTooHighException : public std::exception

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-class Bureaucrat; // ask CHATGPT
+class Bureaucrat;
 
 class Form
 {

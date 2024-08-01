@@ -1,9 +1,9 @@
-NAME = Bureaucrat
+NAME = Form
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Bureaucrat.cpp Bureaucrat_MFs.cpp
+SRC = main.cpp Bureaucrat.cpp Bureaucrat_MFs.cpp Form.cpp Form_MFs.cpp
 HEADER = Bureaucrat.hpp
 
 all: $(NAME)

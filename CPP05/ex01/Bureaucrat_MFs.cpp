@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* Getters */
 std::string Bureaucrat::getName() const 
@@ -33,6 +34,16 @@ void Bureaucrat::GradeDown(void)
     this->grade++;
     if (this->grade > 150)
         throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+    try {
+        form.beSigned(*this);
+        std::cout << this->name << " signed " << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << this->name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 /* Overload of insertion operator */
