@@ -15,3 +15,8 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& source)
 }
 
 ScalarConverter::~ScalarConverter () {}
+
+const char *ScalarConverter::DataTypeNotIdentified::what() const throw()
+{
+	return("Data Type was not identified.");
+}

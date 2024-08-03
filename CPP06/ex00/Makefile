@@ -3,7 +3,7 @@ NAME = convert
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp constructors.cpp convert.cpp
+SRC = main.cpp constructors.cpp convert.cpp IsType.cpp print.cpp
 HEADER = conversion.hpp
 
 all: $(NAME)

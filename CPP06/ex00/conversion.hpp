@@ -1,11 +1,15 @@
 #ifndef CONVERSION_HPP
 # define CONVERSION_HPP
 
-# include <iostream>
-# include <string>
 # include <cctype>
-# include <limits> // For std::numeric_limits
-# include <cstdlib>  // For std::atol - conversion from string to long
+# include <climits>
+# include <cstdlib>
+# include <iostream>
+# include <limits>
+# include <string>
+# include <cfloat>
+# include <iomanip>
+# include <exception>
 
 # define ERROR 0
 # define CHAR 1
@@ -24,27 +28,31 @@ class ScalarConverter
 
   public:
 	static void convert(std::string &literal);
+
+  class DataTypeNotIdentified : public std::exception
+  {
+    public:
+      const char *what() const throw();
+  };
 };
 
+// detect the type of the literal passed as parameter
 int		IdentifyType(std::string const &literal);
 bool	IsChar(std::string const &str);
-bool    IsInt(std::string const &str);
-bool    IsDouble(std::string const &str);
-bool    IsFloat(std::string const &str);
+bool	IsInt(std::string const &str);
+bool	IsDouble(std::string const &str);
+bool	IsFloat(std::string const &str);
+
+// convert it from string to its actual type, then convert it explicitly to the three other data types
+void	CharConv(std::string &str);
+void	IntConv(std::string &str);
+void	FloatConv(std::string &str);
+void	DoubleConv(std::string &str);
+
+// print
+void	PrintChar(std::string str, char c, int i);
+void	PrintInt(std::string str, long i);
+void PrintFloat(std::string str, float f);
+void PrintDouble(std::string str, double d);
 
 #endif
-
-
-// Conversion from string to long:
-    //     long test = std::atol(str.c_str());
-    //     std::cout << "Number: " << test << std::endl;
-
-
-// std::cout << "int:\n";
-// std::cout << "  Max: " << std::numeric_limits<int>::max() << "\n";
-// std::cout << "  Min: " << std::numeric_limits<int>::min() << "\n";
-// std::cout << "  Is signed: " << std::numeric_limits<int>::is_signed << "\n";
-
-// should it be handled?????
-    // if (literal.empty())
-    //     return ERROR;
