@@ -38,17 +38,17 @@ std::string const &AForm::getName() const
     return name;
 }
 
-bool const &AForm::getSignStatus() const
+bool AForm::getSignStatus() const
 {
     return is_signed;
 }
 
-int const &AForm::getSignGrade() const
+int AForm::getSignGrade() const
 {
     return SignGrade;
 }
 
-int const &AForm::getExecGrade() const
+int AForm::getExecGrade() const
 {
     return ExecGrade;
 }

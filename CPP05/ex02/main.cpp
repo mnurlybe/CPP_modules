@@ -7,30 +7,35 @@
 int main(void)
 {
     Bureaucrat Alan("Alan", 50);
+    std::cout << Alan << std::endl;
     ShrubberyCreationForm form("home");
     std::cout << form << std::endl;
 
-    // Alan.signForm(form);
-    // std::cout << form << std::endl;
-    // form.execute(Alan);
-
-    Alan.executeForm(form);
-    try{
+    Alan.signForm(form);
+    std::cout << form << std::endl;
+    try {
         form.execute(Alan);
-    } catch (std::exception &e) {
+    } catch (std::exception &e){
         std::cout << e.what() << std::endl;
     }
-    Alan.signForm(form);
-    Alan.executeForm(form);
 
-    std::cout << "======================" << std::endl << std::endl;
-    Bureaucrat Bob("Bob", 1);
-    PresidentialPardonForm form2("pardon");
+    // Alan.executeForm(form);
+    // try{
+    //     form.execute(Alan);
+    // } catch (std::exception &e) {
+    //     std::cout << e.what() << std::endl;
+    // }
+    // Alan.signForm(form);
+    // Alan.executeForm(form);
 
-    Bob.executeForm(form2);
-    Bob.signForm(form2);
-    std::cout << form2 << std::endl;
-    Bob.executeForm(form2);
+    // std::cout << "======================" << std::endl << std::endl;
+    // Bureaucrat Bob("Bob", 1);
+    // PresidentialPardonForm form2("pardon");
+
+    // Bob.executeForm(form2);
+    // Bob.signForm(form2);
+    // std::cout << form2 << std::endl;
+    // Bob.executeForm(form2);
 
     return 0;
 }

@@ -2,22 +2,22 @@
 #include "Bureaucrat.hpp"
 
 /* Getters */
-std::string const &Form::getName() const 
+std::string  Form::getName() const 
 {
     return name;
 }
 
-bool const &Form::getSignStatus() const
+bool  Form::getSignStatus() const
 {
     return is_signed;
 }
 
-int const &Form::getSignGrade() const
+int  Form::getSignGrade() const
 {
     return SignGrade;
 }
 
-int const &Form::getExecGrade() const
+int  Form::getExecGrade() const
 {
     return ExecGrade;
 }

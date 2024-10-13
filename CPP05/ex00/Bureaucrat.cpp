@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : name(name), grade(g
     if (this->grade < 1)
         throw Bureaucrat::GradeTooHighException();
     else if (this->grade > 150)
-        throw Bureaucrat::GradeTooHighException();        
+        throw Bureaucrat::GradeTooLowException();        
 }
 // Copy constructor
 Bureaucrat::Bureaucrat(const Bureaucrat &source) : name(source.name), grade(source.grade) {}

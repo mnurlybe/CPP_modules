@@ -9,7 +9,7 @@ class Form;
 class Bureaucrat
 {
     private:
-        std::string name;
+        std::string const name;
         int grade;
     public:
         Bureaucrat(); // Default constructor

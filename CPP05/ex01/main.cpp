@@ -4,7 +4,7 @@
 int main(void)
 {
     /* Test 1 */
-    Bureaucrat Alan("Alan", 50);
+    Bureaucrat Alan("Alan", 51);
     std::cout << Alan << std::endl;
 
     Form F1("Form1", 50, 70);
@@ -13,9 +13,12 @@ int main(void)
     Alan.signForm(F1);
     std::cout << F1 << std::endl;
 
+    Form F2;
+    std::cout << F2 << std::endl;
+
     /* Test 2 */
     // try {
-    //     Form F2("Form2", 150, 5);
+    //     Form F2("Form2", 1, 1);
     //     std::cout << F2 << std::endl;
     // } catch (Form::GradeTooHighException &e) {
     //     std::cout << "Exception: " << e.what() << std::endl;
@@ -31,6 +34,7 @@ int main(void)
     // std::cout << F3 << std::endl;
 
     // Bob.signForm(F3);
+    // std::cout << F3 << std::endl;
 
     return 0;
 }

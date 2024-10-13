@@ -25,9 +25,9 @@ class AForm
 
     // Getters
     std::string const &getName() const;
-    bool const  &getSignStatus() const;
-    int const   &getSignGrade() const;
-    int const   &getExecGrade() const;
+    bool    getSignStatus() const;
+    int    getSignGrade() const;
+    int     getExecGrade() const;
 
     // Member Functions
     void    beSigned(Bureaucrat &b);

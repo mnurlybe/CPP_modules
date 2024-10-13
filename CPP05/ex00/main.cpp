@@ -50,6 +50,15 @@ int main(void)
     } catch (Bureaucrat::GradeTooLowException &e) {
         std::cout << "Exception: " << e.what() << std::endl;
     }
-
+    
+    /* Test 4 */
+    
+    try {
+        Bureaucrat F("Frank", 151);
+        std::cout << F << std::endl;
+    }
+    catch (Bureaucrat::GradeTooLowException &e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
     return 0;
 }
