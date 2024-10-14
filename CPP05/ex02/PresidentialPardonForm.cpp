@@ -36,7 +36,8 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
     catch (AForm::FormNotSigned &e) {
         throw AForm::FormNotSigned();
     }
-    std::cout << "REPLACE WITH ACTION: PresidentialPardonForm is being executed by " << executor.getName() << std::endl; //Overwrite according to the subject
+    std::cout << "PresidentialPardonForm is being executed by " << executor.getName() << std::endl;
+    std::cout << target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 
 /* Overload of insertion operator */

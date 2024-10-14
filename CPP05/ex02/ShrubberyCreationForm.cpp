@@ -25,6 +25,12 @@ ShrubberyCreationForm const &ShrubberyCreationForm::operator=(ShrubberyCreationF
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
+/* Exceptions */
+const char *ShrubberyCreationForm::FileNotOpened::what() const throw()
+{
+    return ("ShrubberyCreationForm: File could not be opened.");
+}
+
 /* ============= FUNCTIONS ============= */
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     
@@ -36,7 +42,23 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     catch (AForm::FormNotSigned &e) {
         throw AForm::FormNotSigned();
     }
-    std::cout << "REPLACE WITH ACTION: ShrubberyCreationForm is being executed by " << executor.getName() << std::endl; //Overwrite according to the subject
+    std::cout << "ShrubberyCreationForm is being executed by " << executor.getName() << std::endl; //Overwrite according to the subject
+    std::ofstream outfile;
+    outfile.open((target + "_shrubbery").c_str(), std::ios::out | std::ios::trunc);
+    if (!outfile.is_open())
+        throw ShrubberyCreationForm::FileNotOpened();
+
+    outfile << "      /\\      " << std::endl;
+    outfile << "     /\\*\\     " << std::endl;
+    outfile << "    /\\O\\*\\    " << std::endl;
+    outfile << "   /*/\\/\\/\\   " << std::endl;
+    outfile << "  /\\O\\/\\*\\/\\  " << std::endl;
+    outfile << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+    outfile << "/\\O\\/\\/*/\\/O/\\" << std::endl;
+    outfile << "      ||      " << std::endl;
+    outfile << "      ||      " << std::endl;
+    outfile << "      ||      " << std::endl;
+    outfile.close();
 }
 
 /* Overload of insertion operator */

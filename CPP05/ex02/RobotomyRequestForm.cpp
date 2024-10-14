@@ -36,7 +36,13 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
     catch (AForm::FormNotSigned &e) {
         throw AForm::FormNotSigned();
     }
-    std::cout << "REPLACE WITH ACTION: RobotomyRequestForm is being executed by " << executor.getName() << std::endl; //Overwrite according to the subject
+    std::cout << "RobotomyRequestForm is being executed by " << executor.getName() << std::endl;
+    std::cout << "* drilling noises *" << std::endl;
+    srand((unsigned)time(NULL));
+    if (std::rand() % 2 == 0)
+        std::cout << target << " has been robotomized successfully" << std::endl;
+    else
+        std::cout << target << " robotomization failed" << std::endl;
 }
 
 /* Overload of insertion operator */
