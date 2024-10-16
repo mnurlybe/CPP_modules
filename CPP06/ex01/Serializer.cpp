@@ -26,3 +26,5 @@ Data* Serializer::deserialize(uintptr_t raw)
 {
     return reinterpret_cast<Data*>(raw);
 }
+
+/* reinterpret_cast -> Casting pointers to other unrelated types (e.g., int to float, void*) */

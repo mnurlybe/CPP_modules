@@ -76,3 +76,7 @@ bool    IsFloat(std::string const &str)
         return false;
     return true;
 }
+
+/*std::string::npos is a constant value in C++ that represents "no position." 
+It is typically returned by string-related functions to indicate that a search 
+operation failed or that a requested substring was not found.*/

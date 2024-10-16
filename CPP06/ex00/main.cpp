@@ -15,3 +15,11 @@ int main(int argc, char **argv)
         std::cout << "Wrong arguments!" << std::endl;
     return 0;
 }
+
+// ScalarConverter::convert("42");
+// ScalarConverter::convert("42.0f");
+// ScalarConverter::convert("42.0");
+// ScalarConverter::convert("+inf");
+// ScalarConverter::convert("-inff");
+// ScalarConverter::convert("nan");
+// ScalarConverter::convert("invalid");

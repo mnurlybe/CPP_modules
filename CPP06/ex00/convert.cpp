@@ -35,6 +35,9 @@ int	IdentifyType(std::string const &literal)
         return FLOAT;
     return ERROR;
 }
+
+/* static_cast<new_type>(expression); */
+/* static cast is used for basic type conversions (e.g., double to int) */
 void CharConv(std::string &str)
 {
     char c = static_cast<unsigned char>(str[0]);

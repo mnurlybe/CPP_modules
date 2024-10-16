@@ -19,4 +19,8 @@ class Serializer
         static Data* deserialize(uintptr_t raw);
 };
 
+/* static methods (also called static member functions) are methods within a class 
+that do not operate on any specific instance of the class. 
+These methods belong to the class itself rather than to any individual object. */
+
 #endif

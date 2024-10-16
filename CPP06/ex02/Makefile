@@ -3,8 +3,8 @@ NAME = Base
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = Base.cpp
-HEADER = Base.hpp A.hpp B.hpp C.hpp
+SRC = main.cpp Base.cpp
+HEADER = Base.hpp
 
 all: $(NAME)
 
