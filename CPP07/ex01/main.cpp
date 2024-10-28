@@ -17,9 +17,8 @@ int main(void)
 
     iter(arr, length, printArray);
     std::cout << std::endl;
-
     iter(arr, length, IncrementArray);
-    
+    std::cout << "Incremented int Array:" << std::endl;
     iter(arr, length, printArray);
     std::cout << std::endl;
 

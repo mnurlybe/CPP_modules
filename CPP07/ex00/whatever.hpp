@@ -4,6 +4,16 @@
 #include <iostream>
 #include <string>
 
+/*function templates are a way to create
+ a function that can work with any data type, 
+ allowing you to write generic and reusable code. 
+ A function template is defined with a special 
+ syntax that includes the template keyword, 
+ followed by a placeholder for the data type. 
+ This placeholder can be used within the function 
+ to represent any type that will be specified 
+ later when the function is called.*/
+ 
 template <typename T>
 void swap( T &param1, T &param2 ) {
     T temp = param1;

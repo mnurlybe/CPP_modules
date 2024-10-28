@@ -3,7 +3,7 @@ NAME = Array
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Array.tpp
+SRC = main.cpp
 HEADER = Array.hpp
 
 all: $(NAME)

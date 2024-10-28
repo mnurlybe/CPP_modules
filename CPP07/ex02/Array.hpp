@@ -21,6 +21,7 @@ class Array
         ~Array();
 
         T &operator[](unsigned int index);
+        const T &operator[](unsigned int index) const;
 
         class IndexOutOfBounds : public std::exception
         {

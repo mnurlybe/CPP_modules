@@ -51,6 +51,16 @@ T &Array<T>::operator[](unsigned int index) {
     }
 }
 
+// Const Subscript operator []
+template <typename T>
+const T &Array<T>::operator[](unsigned int index) const {
+    if (index < 0 || index >= _size) {
+        throw IndexOutOfBounds();
+    } else {
+        return _array[index];
+    }
+}
+
 // Exception class
 template <typename T>
 const char *Array<T>::IndexOutOfBounds::what() const throw() {
