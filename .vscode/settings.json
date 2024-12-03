@@ -46,6 +46,11 @@
         "tuple": "cpp",
         "utility": "cpp",
         "ranges": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "ctime": "cpp",
+        "list": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "sstream": "cpp"
     }
 }
