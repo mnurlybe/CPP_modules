@@ -10,7 +10,6 @@ int main(int argc, char **argv)
     try {
         BitcoinExchange exchange;
         exchange.loadFile(argv[1]);
-        // exchange.display();
     } catch(std::exception &e) {
         std::cerr << e.what() << std::endl; 
     }

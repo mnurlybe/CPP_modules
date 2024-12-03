@@ -3,7 +3,7 @@ NAME = btc
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp BitcoinExchange.cpp
+SRC = main.cpp BitcoinExchange.cpp Exceptions.cpp Utils.cpp
 HEADER = BitcoinExchange.hpp
 
 all: $(NAME)

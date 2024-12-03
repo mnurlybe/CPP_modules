@@ -5,16 +5,20 @@
 # include <fstream>
 # include <map>
 # include <string>
+# include <cstdlib>
+# include <exception>
 
 class BitcoinExchange
 {
     private:
         // std::map<std::string, double> _exchange;
-        std::map<std::string, std::string> _exchange;
+        std::map<std::string, double> _exchange;
         std::string _filename;
         mutable std::string _error;
         void processCSV(void);
         void printContainer();
+        bool validateDate(std::string date, bool isArgvFile);
+        bool validateValue(std::string value, bool isArgvFile);
 
     public:
         BitcoinExchange();
@@ -23,14 +27,23 @@ class BitcoinExchange
         ~BitcoinExchange();
 
         void loadFile(std::string filename);
-        void display();
 
     class DataBaseException : public std::exception {
         public:
             const char *what() const throw();
     };
 
+    class DataBaseFormatException : public std::exception {
+        public:
+            const char *what() const throw();
+    };
+
     class FileErrorException : public std::exception {
+        public:
+            const char *what() const throw();
+    };
+
+    class FileFormatException : public std::exception {
         public:
             const char *what() const throw();
     };

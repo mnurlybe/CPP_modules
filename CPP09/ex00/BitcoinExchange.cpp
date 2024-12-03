@@ -26,6 +26,34 @@ void BitcoinExchange::loadFile(std::string filename)
     if (!file.is_open()) {
         throw FileErrorException();
     }
+
+    std::string line;
+    std::getline(file, line);
+    if (line != "date | value") {
+        throw FileFormatException();
+    }
+
+    while (std::getline(file, line)) {
+        std::string date = line.substr(0, line.find(' '));
+        std::string value = line.substr(line.find('|') + 2);
+
+        int DateIsWrong = validateDate(date, true);
+        if (DateIsWrong) 
+            continue;
+        int ValueIsWrong = validateValue(value, true);
+        if (ValueIsWrong) 
+            continue;
+        
+        std::map<std::string, double>::iterator it;
+        it = _exchange.lower_bound(date);
+        double rate = it->second;
+        if (it != _exchange.begin()) {
+				if (it->first != date)
+					--it;
+				rate = it->second;
+			}
+		std::cout << date << " => " << value << " = " << rate * std::strtod(value.c_str(), NULL) << std::endl;
+    }
 }
 
 void BitcoinExchange::processCSV(void) {
@@ -35,35 +63,26 @@ void BitcoinExchange::processCSV(void) {
     }
 
     std::string line;
+    std::getline(database, line);
+
+    if (line != "date,exchange_rate") {
+        throw DataBaseFormatException();
+    }
+
     while (std::getline(database, line)) {
-        std::string key = line.substr(0, line.find(','));
+        std::string date = line.substr(0, line.find(','));
         std::string value = line.substr(line.find(',') + 1);
-        _exchange[key] = value;
+        try {
+            validateDate(date, false);
+            validateValue(value, false);
+        } catch(std::exception &e) {
+            std::cerr << "Database: " << e.what() << std::endl;
+            exit(1);
+        }
+        double ex_rate = strtod(value.c_str(), NULL);
+        _exchange.insert(std::pair<std::string, double>(date, ex_rate));
     }
-    printContainer();
+    database.close();
+    // printContainer();
 }
 
-/* Exceptions */
-const char *BitcoinExchange::DataBaseException::what() const throw() {
-    return "Error: could not open DataBase file.";
-}
-
-const char *BitcoinExchange::FileErrorException::what() const throw() {
-    return "Error: could not open file.";
-}
-
-/* Helper Functions */
-void BitcoinExchange::printContainer() {
-    
-    // print only the first 10 elements
-    std::map<std::string, std::string>::iterator it = _exchange.begin();
-    for (int i = 0; i < 10; i++) {
-        std::cout << it->first << " : " << it->second << std::endl;
-        it++;
-    }
-
-    // print all elements
-    /* for (std::map<std::string, std::string>::iterator it = _exchange.begin(); it != _exchange.end(); it++) {
-        std::cout << it->first << " : " << it->second << std::endl;
-    } */
-}
