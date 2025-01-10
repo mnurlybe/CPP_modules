@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
+#include <string>
+#include <sstream>
 
 # define THRESHOLD 3
 # define INT_MAX 2147483647
@@ -29,6 +31,11 @@ class PmergeMe {
         std::vector<int> _vector;
         std::deque<int> _deque;
 
+        struct Element {
+        int value;
+        std::string label;  // "b1", "a1", "a2", etc.
+        };
+
         template <typename T> 
         void FordJohnsonSort(T &container);
 
@@ -42,18 +49,20 @@ class PmergeMe {
                                 std::vector<typename T::iterator>& odd,
                                 int recursion_level);
 
-        // template <typename T>
-        // void Insertion(T &container, int recursion_level);
-
         template <typename T>
         void InsertionV2(T &container, 
                         std::vector<typename T::iterator>& main,
                         std::vector<typename T::iterator>& pend,
                         size_t b_index,
-                        int recursion_level);
+                        int a_value,
+                        int recursion_level,
+                        bool is_jacobsthal);
 
-        // void mergeInsertSortDeque(int left, int right);
-        // void mergeInsertSortDeque(int left, int right);
+        template <typename T>
+        void InsertOdd(T &container, 
+                        std::vector<typename T::iterator>& main,
+                        std::vector<typename T::iterator>& odd,
+                        int recursion_level);
 
         /* -------------- Utils ---------------- */
         template <typename T> 
@@ -69,9 +78,6 @@ class PmergeMe {
 
         template <typename Iterator>
         Iterator my_next(Iterator it, size_t n);
-
-        template <typename T>
-        bool _comp(T lv, T rv) { return *lv < *rv; };
 };
 
 #endif

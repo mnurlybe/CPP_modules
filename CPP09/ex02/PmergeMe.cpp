@@ -139,11 +139,8 @@ template <typename T> void PmergeMe::FordJohnsonSort(T &container)
             std::cout << "Number of insertions is greater than pend size." << std::endl;
             break;
         }
-        typename std::vector<container_iterator>::iterator pend_it = my_next(pend.begin(), num_of_insertions - 1);
-        typename std::vector<container_iterator>::iterator bound_it =
-            my_next(main.begin(), jacobsthal + total_insertions);  
         while (num_of_insertions-- > 0 && !pend.empty()) {
-            InsertionV2(container, main, main_copy, pend, pend_copy, num_of_insertions, recursion_level, bound_it, pend_it);
+            InsertionV2(container, main, pend, num_of_insertions, recursion_level);
         }
         jacobsthal_prev = jacobsthal;
         jacobstal_index++;
@@ -257,20 +254,15 @@ void PmergeMe::InitializeArraysV2(T &container,
 }
 
 
-// template <typename T>
-// bool PmergeMe::_comp(T lv, T rv) { return *lv < *rv; };
-
 template <typename T>
 void PmergeMe::InsertionV2(T &container, 
                             std::vector<typename T::iterator>& main,
-                            std::vector<typename T::iterator>& main_copy,  
                             std::vector<typename T::iterator>& pend,
-                            std::vector<typename T::iterator>& pend_copy,
                             size_t b_index,
-                            int recursion_level,
-                            typename std::vector<typename T::iterator>::iterator bound_it,
-                            typename std::vector<typename T::iterator>::iterator pend_it) {
-
+                            int recursion_level) {
+    
+    (void)container;
+    (void)main;
     typedef typename T::iterator it;
     typedef typename T::value_type Value;
     it group_last = pend[b_index];
@@ -280,197 +272,9 @@ void PmergeMe::InsertionV2(T &container,
     Value compare_value = *group_last;
     std::cout << "Compare value: " << compare_value << std::endl;
 
-    (void)pend_copy;
-    (void)main_copy;
-
-    // size_t a_pos = b_index + 2 + total_insertions;
-    size_t a_pos = b_index + 2;
-    typename std::vector<it>::iterator search_end = main.begin();
-    for (size_t i = 0; i < a_pos && search_end != main.end(); ++i) {
-        ++search_end;
-    }
-    (void)pend_it;
-    // typename std::vector<it>::iterator idx =
-    //             std::upper_bound(main.begin(), bound_it, *pend_it, _comp<it>);
-    std::cout << "Search end: " << **bound_it << std::endl;
-    // std::cout << "Index: " << **idx << std::endl;
-
-    
-
-    // Binary search implementation
-    typename std::vector<it>::iterator left_bound = main.begin();
-    typename std::vector<it>::iterator right_bound = search_end;
-    while (left_bound != right_bound) {
-        typename std::vector<it>::iterator mid = left_bound + std::distance(left_bound, right_bound) / 2;
-        if (**mid < compare_value) {
-            left_bound = mid + 1;
-        } else {
-            right_bound = mid;
-        }
-    }
-
-    typename std::vector<it>::iterator insert_pos = left_bound;
-    std::cout << "Insert pos: " << **insert_pos << std::endl;
-
-    // here we start working with the original container
-
-    // Calculate the target position in the container
-    size_t target_pos = 0;
-    for (it it = container.begin(); it != *insert_pos; ++it) {
-        ++target_pos;
-    }
-    target_pos = (target_pos / recursion_level) * recursion_level;
-    std::cout << "Container target pos: " << target_pos << std::endl;
-
-    // Move the group to the target position
-    // moveGroup(container, std::distance(container.begin(), group_first), recursion_level, target_pos);
-    // std::cout << "\033[1;33m";
-    // printFullContainer(container);
-    // std::cout << "\033[0m";
-
-    std::cout << "-----------------------" << std::endl;
-
     pend.erase(pend.begin() + b_index);
 
 }
-
-// int CalculateInsertPos(int main_index, int recursion_level) {
-//     if (main_index == 0) return 0;
-//     else if (main_index == 1) return recursion_level;
-//     else return recursion_level + 2 * (main_index - 1) * recursion_level;
-// }
-
-
-// Insertion using Jacobsthal sequence and Binary search
-// template <typename T>
-// void PmergeMe::Insertion(T &container, int recursion_level) {
-
-//     if (pend.empty()) {
-//         std::cerr << "Pend is empty." << std::endl;
-//         return; 
-//     }
-
-//     typedef typename std::vector<int>::iterator it;
-
-//     if (pend.size() == 1) {
-//         it pend_elem = pend.begin();
-//         std::cout << "Pend element: " << *pend_elem << std::endl;
-//         size_t pend_index = std::distance(pend.begin(), pend_elem);
-//         // compare pend with main, pend element index is always compared against the main element index + 2, pend[0] is compared against main[2]
-//         it main_search_area_end = my_next(main.begin(), pend_index + 2 + 1);
-//         std::cout << "Main search area end: " << *main_search_area_end << std::endl;
-//         int main_index = 0;
-//         for (it main_elem = main.begin(); main_elem != main_search_area_end; ++main_elem) {
-//             std::cout << "Main element: " << *main_elem << std::endl;
-//             if (*pend_elem < *main_elem) 
-//             {   
-//                 main.insert(main_elem, *pend_elem);
-//                 pend.erase(pend_elem);
-//                 int group_start = (2 - 1) * recursion_level * 2;
-//                 std::cout << "Group start: " << group_start << std::endl;
-//                 int insert_pos = CalculateInsertPos(main_index, recursion_level);
-//                 std::cout << "Insert pos: " << insert_pos << std::endl;
-//                 moveGroup(container, group_start, recursion_level, insert_pos);
-//                 break;
-//             }
-//             main_index++;
-//         }
-//     } 
-//     else if (pend.size() > 1) {
-//         // Compute Jacobsthal numbers up to the size of the container
-//         std::vector<int> jacobsthal = computeJacobsthalNumbers(pend.size() + 1);
-//         std::cout << "Jacobsthal sequence: ";
-//         printFullContainer(jacobsthal);
-
-
-
-//         // compare and insert pend with Jacobsthal sequence
-//         // jacobsthal_i = 1;
-//         // while (jacobsthal.size != 1){
-//         //     int num_of_insertions = jacobsthal[jacobsthal_i] - jacobsthal[jacobsthal_i - 1];
-//         //     std::cout << "Number of insertions: " << num_of_insertions << std::endl;
-//         //     while (num_of_insertions-- > 0 && !pend.empty()) {
-//         //         it pend_elem = my_next(pend.begin(), num_of_insertions - 1);
-//         //         std::cout << "Pend element: " << *pend_elem << std::endl;
-//         //     }
-//         // }
-
-//         for (size_t j = 1; j < jacobsthal.size() && !pend.empty(); ++j) {
-//             int count = jacobsthal[j] - jacobsthal[j - 1];
-//             while (count-- > 0 && !pend.empty()) {
-//                 it pend_elem = my_next(pend.begin(), count);
-//                 std::cout << "Pend element: " << *pend_elem << std::endl;
-//                 size_t pend_index = std::distance(pend.begin(), pend_elem);
-//                 it main_bound = my_next(main.begin(), getMainPairindex(pend_index) + 1);
-//                 int main_index = 0;
-//                 for (it main_elem = main.begin(); main_elem != main_bound; ++main_elem) {
-//                     std::cout << "Main element: " << *main_elem << std::endl;
-//                     if (*pend_elem < *main_elem) 
-//                     {
-//                         std::cout << "Inserting pend element: " << *pend_elem << std::endl;
-//                         main.insert(main_elem, *pend_elem);
-//                         // adjust main_pair_num to match the new main
-//                         main_pair_num.insert(main_pair_num.begin() + main_index, pend_pair_num[pend_index]);
-//                         std::cout << "Main pair num: ";
-//                         printContainer(main_pair_num);
-//                         std::cout << "Pend pair num: ";
-//                         printContainer(pend_pair_num);
-//                         int pend_pair_index = std::distance(pend_pair_num.begin(), pend_elem);
-//                         int group_start = *pend_pair_index * recursion_level;
-                        
-
-//                         pend.erase(pend_elem);
-//                         pend_pair_num.erase(pend_pair_num.begin() + pend_index);
-//                         break;
-//                     }
-//                     main_index++;
-//                 }
-//             }
-//         }
-
-//     }
-
-//     // compare odd against main, the search area will always be whole main, and handle it in the original container
-//     int num_of_comparison_units = container.size() / recursion_level;
-//     if (!odd.empty()) {
-//         it odd_elem = odd.begin();
-//         std::cout << "Odd element: " << *odd_elem << std::endl;
-//         it main_search_area_end = my_next(main.begin(), main.size());
-//         std::cout << "Main search area end: " << *main_search_area_end << std::endl;
-//         int main_index = 0;
-//         for (it main_elem = main.begin(); main_elem != main_search_area_end; ++main_elem) {
-//             std::cout << "Main element: " << *main_elem << std::endl;
-//             if (*odd_elem < *main_elem) 
-//             {
-//                 main.insert(main_elem, *odd_elem);
-//                 odd.erase(odd_elem);
-//                 int group_start = (num_of_comparison_units - 1) * recursion_level;
-//                 std::cout << "Group start: " << group_start << std::endl;
-//                 std::cout << "Main index: " << main_index << std::endl;
-//                 int insert_pos = recursion_level * main_index;
-//                 std::cout << "Insert pos: " << insert_pos << std::endl;
-//                 moveGroup(container, group_start, recursion_level, insert_pos);
-//                 break;
-//             }
-//             main_index++;
-//         }
-//     }
-
-// //    write in red
-//     std::cout << "\033[1;31m" << "Main (" << main.size() << ") :";
-//     printFullContainer(main);
-//     std::cout << "Pend (" << pend.size() << ") :";
-//     printFullContainer(pend);
-//     std::cout << "Odd (" << odd.size() << ") :";
-//     printFullContainer(odd);
-//     std::cout << "Leftovers (" << leftovers.size() << ") :";
-//     printFullContainer(leftovers);
-//     std::cout << "\033[0m";
-//     std::cout << std::endl;       
-
-//     std::cout << "\033[1;32m" << "====== END OF RECURSION LEVEL " << recursion_level << "============" << "\033[0m" << std::endl;
-
-// }
 
 /* -------------- Utils ---------------- */
 
@@ -560,7 +364,3 @@ std::vector<int> PmergeMe::getVector() const {
 std::deque<int> PmergeMe::getDeque() const {
     return _deque;
 }
-
-
-// {{6, 15}, {8, 16}, {2, 11}, {0, 17}, {9, 18}, {14, 19}, {5, 12}, {4, 20}, {3, 10}, {1, 21}, {7, 13}};
-// {b1, a1, b2, a2, b3, a3, b4, a4, b5, a5, b6};
