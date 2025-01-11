@@ -17,5 +17,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-// shuf -i 1-100000 -n 3000 | tr "\n" " "

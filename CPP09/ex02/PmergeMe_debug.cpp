@@ -91,7 +91,8 @@ std::string int_to_string(int number) {
     return ss.str();
 }
 
-template <typename T> void PmergeMe::FordJohnsonSort(T &container) 
+template <typename T>
+void PmergeMe::FordJohnsonSort(T &container) 
 {
     /*------------ SECTION 1: Recursively Sort Pairs -----------*/
     int recursion_counter;
@@ -537,38 +538,6 @@ void PmergeMe::swapGroups(T &container, size_t start_pos, size_t group_size) {
     for (size_t i = 0; i < half_group_size; ++i) {
         std::swap(container[start_pos + i], container[start_pos + half_group_size + i]);
     }
-}
-
-template <typename T>
-void PmergeMe::moveGroup(T &container, size_t group_start, size_t group_size, size_t insert_pos) {
-    // Check bounds
-    if (group_start + group_size > container.size() || insert_pos > container.size()) {
-        throw std::out_of_range("Indices out of range.");
-    }
-
-    // Define iterators for group range
-    typename T::iterator group_start_it = container.begin();
-    std::advance(group_start_it, group_start);
-
-    typename T::iterator group_end_it = group_start_it;
-    std::advance(group_end_it, group_size);
-
-    // Extract the group into a temporary container
-    std::vector<typename T::value_type> temp_group(group_start_it, group_end_it);
-
-    // Erase the group from the original container
-    container.erase(group_start_it, group_end_it);
-
-    // Calculate the adjusted insertion position after erase
-    if (group_start < insert_pos) {
-        insert_pos -= group_size;
-    }
-
-    // Insert the group into the target position
-    typename T::iterator insert_it = container.begin();
-    std::advance(insert_it, insert_pos);
-
-    container.insert(insert_it, temp_group.begin(), temp_group.end());
 }
 
 template <typename T>

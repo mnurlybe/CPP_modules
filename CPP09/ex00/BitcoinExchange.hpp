@@ -11,7 +11,6 @@
 class BitcoinExchange
 {
     private:
-        // std::map<std::string, double> _exchange;
         std::map<std::string, double> _exchange;
         std::string _filename;
         mutable std::string _error;
