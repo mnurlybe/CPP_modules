@@ -78,6 +78,20 @@ class PmergeMe {
 
         template <typename Iterator>
         Iterator my_next(Iterator it, size_t n);
+
+        template <typename T>
+        void isSorted(T &container); 
 };
 
 #endif
+
+/*
+What is left:
+1. Check memory leaks
+2. Check error management
+3. Remove debug print statements
+4. Add correct printing output
+5. Add is sorted check
+6. check with higher range of numbers.
+7. remove unused functions
+*/

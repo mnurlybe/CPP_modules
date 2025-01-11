@@ -54,11 +54,11 @@ void PmergeMe::Sort() {
     // clock_t start, stop;
 
     // write in green
-    std::cout << "\033[1;32m" << "Vector sorting" << "\033[0m" << std::endl;
-    std::cout << "Before: ";
-    printFullContainer(_vector);
+    // std::cout << "\033[1;32m" << "Vector sorting" << "\033[0m" << std::endl;
+    // std::cout << "Before: ";
+    // printFullContainer(_vector);
     // start = clock();
-    FordJohnsonSort(_vector);
+    // FordJohnsonSort(_vector);
     // stop = clock();
     // write in yellow
     // std::cout << "\033[1;33m" << "After: ";
@@ -66,11 +66,12 @@ void PmergeMe::Sort() {
     // std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : ";
     // std::cout << "\033[1;33m" << static_cast<double>(stop - start) / CLOCKS_PER_SEC * 1000 << " milliseconds" << std::endl << std::endl;
 
-    // std::cout << "\033[1;32m" << "Deque sorting" << "\033[0m" << std::endl;
-    // std::cout << "Before: ";
-    // printFullContainer(_deque);
+    std::cout << "\033[1;32m" << "Deque sorting" << "\033[0m" << std::endl;
+    std::cout << "Before: ";
+    printFullContainer(_deque);
     // start = clock();
-    // FordJohnsonSort(_deque);
+    FordJohnsonSort(_deque);
+    isSorted(_deque);
     // stop = clock();
     // std::cout << "\033[1;33m" << "After: ";
     // printFullContainer(_deque);
@@ -568,6 +569,25 @@ void PmergeMe::moveGroup(T &container, size_t group_start, size_t group_size, si
     std::advance(insert_it, insert_pos);
 
     container.insert(insert_it, temp_group.begin(), temp_group.end());
+}
+
+template <typename T>
+void PmergeMe::isSorted(T &container) {
+    typename T::iterator it = container.begin();
+    typename T::iterator it_next = container.begin();
+    std::advance(it_next, 1);
+
+    while (it_next != container.end()) {
+        if (*it > *it_next) {
+            throw std::runtime_error("Container is not sorted.");
+        }
+        it++;
+        it_next++;
+    }
+    // write in green
+    std::cout << "\033[1;32m";
+    std::cout << "Container is sorted." << std::endl;
+    std::cout << "\033[0m";
 }
 
 /* -------------- Getters ---------------- */
