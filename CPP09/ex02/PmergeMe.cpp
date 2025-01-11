@@ -159,7 +159,7 @@ void PmergeMe::FordJohnsonSort(T &container)
                 /*get search_end value*/
                 std::string b_label = "b" + int_to_string(b_index + 2 + b_diff);
                 std::string a_label = "a" + int_to_string(b_index + 2 + b_diff);
-                int a_value;
+                int a_value = 0;
                 for (size_t i = 0; i < original_main.size(); i++) {
                     if (original_main[i].label == a_label) {
                         a_value = original_main[i].value;
@@ -182,7 +182,7 @@ void PmergeMe::FordJohnsonSort(T &container)
             while (!pend.empty()) {
                 std::string b_label = "b" + int_to_string(b_index + 2 + insertion_subcounter);
                 std::string a_label = "a" + int_to_string(b_index + 2 + insertion_subcounter);
-                int a_value;
+                int a_value = 0;
                 for (size_t i = 0; i < original_main.size(); i++) {
                     if (original_main[i].label == a_label) {
                         a_value = original_main[i].value;
