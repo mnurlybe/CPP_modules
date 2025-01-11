@@ -163,20 +163,21 @@ template <typename T> void PmergeMe::FordJohnsonSort(T &container)
         
         int num_of_insertions = jacobsthal_curr - jacobsthal_prev;
         int insertion_counter = 0;
+        int insertion_subcounter = 0;
         bool is_jacobsthal = true;
         while (!pend.empty()) { 
             if (num_of_insertions > static_cast<int>(pend.size())) {
                 std::cout << "Number of insertions is greater than pend size: " << pend.size() << std::endl;
-                insertion_counter -= num_of_insertions;
-                num_of_insertions = pend.size();
                 is_jacobsthal = false;
-                // break;
+                break;
             }
+            std::cout << "num_of_insertions: " << num_of_insertions << std::endl;
+            int b_diff = insertion_counter - num_of_insertions + 2;
             while (num_of_insertions-- > 0 && !pend.empty()) {
                 size_t b_index = num_of_insertions;
                 /*get search_end value*/
-                std::string b_label = "b" + int_to_string(b_index + 2 + insertion_counter);
-                std::string a_label = "a" + int_to_string(b_index + 2 + insertion_counter);
+                std::string b_label = "b" + int_to_string(b_index + 2 + b_diff);
+                std::string a_label = "a" + int_to_string(b_index + 2 + b_diff);
                 int a_value;
                 for (size_t i = 0; i < original_main.size(); i++) {
                     if (original_main[i].label == a_label) {
@@ -190,6 +191,7 @@ template <typename T> void PmergeMe::FordJohnsonSort(T &container)
                 std::cout << "b_label: " << b_label << ", a_label: " << a_label << ", a_value: " << a_value << std::endl;
                 std::cout << "\033[0m";
                 InsertionV2(container, main, pend, b_index, a_value, recursion_level, is_jacobsthal);
+                insertion_subcounter++;
                 /*----------------- Printing Main, Pend, Odd arrays -----------------*/
                 std::cout << "\033[1;31m";
                 std::cout << "Main (" << main.size() << ") :";
@@ -211,6 +213,44 @@ template <typename T> void PmergeMe::FordJohnsonSort(T &container)
             jacobsthal_curr = get_jacobsthal(jacobstal_index);
             num_of_insertions = jacobsthal_curr - jacobsthal_prev;
             insertion_counter += num_of_insertions;
+        }
+
+        // handle rest of pend elements
+        if (!is_jacobsthal && !pend.empty()) {
+            size_t b_index = 0;
+            while (!pend.empty()) {
+                std::string b_label = "b" + int_to_string(b_index + 2 + insertion_subcounter);
+                std::string a_label = "a" + int_to_string(b_index + 2 + insertion_subcounter);
+                int a_value;
+                for (size_t i = 0; i < original_main.size(); i++) {
+                    if (original_main[i].label == a_label) {
+                        a_value = original_main[i].value;
+                        break;
+                    }
+                }
+                // write in yellow
+                std::cout << "\033[1;32m";
+                std::cout << "b_index: " << b_index << "insertion_counter: " << insertion_subcounter << std::endl;
+                std::cout << "b_label: " << b_label << ", a_label: " << a_label << ", a_value: " << a_value << std::endl;
+                std::cout << "\033[0m";
+                InsertionV2(container, main, pend, 0, a_value, recursion_level, is_jacobsthal);
+                b_index++;
+                /*----------------- Printing Main, Pend, Odd arrays -----------------*/
+                std::cout << "\033[1;31m";
+                std::cout << "Main (" << main.size() << ") :";
+                for (size_t i = 0; i < main.size(); i++) {
+                    std::cout << *main[i] << " ";
+                }
+                std::cout << "; Pend (" << pend.size() << ") :";
+                for (size_t i = 0; i < pend.size(); i++) {
+                    std::cout << *pend[i] << " ";
+                }
+                std::cout << "; Odd (" << odd.size() << ") :";
+                for (size_t i = 0; i < odd.size(); i++) {
+                    std::cout << *odd[i] << " ";
+                }
+                std::cout << "\033[0m" << std::endl;
+            }
         }
 
         // handle odd
@@ -363,12 +403,8 @@ void PmergeMe::InsertionV2(T &container,
     Value compare_value = *group_last;
 
     typename std::vector<_it>::iterator search_end;
-    if (is_jacobsthal == false) {
-        search_end = main.end() - 1;
-    } else {
-        for (search_end = main.begin(); search_end != main.end(); ++search_end) {
-            if (**search_end == a_value) break;
-        }
+    for (search_end = main.begin(); search_end != main.end(); ++search_end) {
+        if (**search_end == a_value) break;
     }
     std::cout << "Compare value: " << compare_value << std::endl;
     std::cout << "Search end: " << **search_end << std::endl;
@@ -394,8 +430,10 @@ void PmergeMe::InsertionV2(T &container,
     std::cout << "main_insert_pos_value: " << **insert_pos << std::endl;
 
     main.insert(insert_pos, group_last);
-    pend.erase(pend.begin() + b_index);
-
+    if (is_jacobsthal == false)
+        pend.erase(pend.begin());
+    else if (is_jacobsthal == true)
+        pend.erase(pend.begin() + b_index);
 }
 
 template <typename T>
